@@ -35,11 +35,11 @@ body {
 }
 
 .casilla.X {
-  color: #002680; /* verde */
+  color: #002680; 
 }
 
 .casilla.O {
-  color: #ff0000; /* rojo */
+  color: #ff0000; 
 }
 
 

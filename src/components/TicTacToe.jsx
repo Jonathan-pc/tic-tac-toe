@@ -11,22 +11,19 @@ function Tablero() {
   const [ganador, setGanador] = useState(null);
 
   const handleClick = (fila, columna) => {
-    if (ganador) return; // Si ya hay un ganador, no se puede jugar más
-
+    if (ganador) return; 
     const nuevaCasilla = tablero[fila][columna];
-    if (nuevaCasilla !== '') return; // Si la casilla ya está ocupada, no se puede jugar
-
+    if (nuevaCasilla !== '') return; 
     const nuevoTablero = [...tablero];
     nuevoTablero[fila][columna] = jugadorActual;
 
     setTablero(nuevoTablero);
-    setJugadorActual(jugadorActual === 'X' ? 'O' : 'X'); // Cambiar de jugador
+    setJugadorActual(jugadorActual === 'X' ? 'O' : 'X'); 
 
     comprobarGanador(nuevoTablero);
   };
 
   const comprobarGanador = (tablero) => {
-    // Comprobar filas y columnas
     for (let i = 0; i < 3; i++) {
       if (tablero[i][0] === tablero[i][1] && tablero[i][1] === tablero[i][2] && tablero[i][0] !== '') {
         setGanador(tablero[i][0]);
@@ -38,7 +35,6 @@ function Tablero() {
       }
     }
 
-    // Comprobar diagonales
     if (tablero[0][0] === tablero[1][1] && tablero[1][1] === tablero[2][2] && tablero[0][0] !== '') {
       setGanador(tablero[0][0]);
       return;
@@ -48,7 +44,6 @@ function Tablero() {
       return;
     }
 
-    // Si no hay ganador, comprobar si es un empate
     if (!tablero.flat().includes('')) {
       setGanador('Empate');
     }
